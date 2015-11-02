@@ -3526,6 +3526,8 @@ namespace SpeedyChefAPIv2
 		
 		private int _Recid;
 		
+		private string _Recdesc;
+		
 		public RecipesForMealResult()
 		{
 		}
@@ -3558,6 +3560,22 @@ namespace SpeedyChefAPIv2
 				if ((this._Recid != value))
 				{
 					this._Recid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recdesc", DbType="VarChar(255)")]
+		public string Recdesc
+		{
+			get
+			{
+				return this._Recdesc;
+			}
+			set
+			{
+				if ((this._Recdesc != value))
+				{
+					this._Recdesc = value;
 				}
 			}
 		}

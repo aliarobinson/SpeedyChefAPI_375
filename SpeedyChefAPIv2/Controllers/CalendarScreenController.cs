@@ -44,6 +44,27 @@ namespace SpeedyChefApi.Controllers
             return View();
         }
 
+
+        /// <summary>
+        /// Used to get recipes for a meal to be displayed. 
+        /// </summary>
+        /// <param name="user">Current user to get recipes for a meal</param>
+        /// <param name="mealId">Meal id to find associated recipes</param>
+        /// <returns></returns>
+        public ActionResult GetRecipesForMeal(string user, int mealId)
+        {
+            if (user == null)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
+            SpeedyChefDataContext scdc = new SpeedyChefDataContext();
+            IEnumerable<RecipesForMealResult> rfmr = null;
+            rfmr = scdc.RecipesForMeal(user, mealId);
+            return Json(rfmr, JsonRequestBehavior.AllowGet);
+        }
+
+
+
         /// <summary>
         /// Used to call the stored procedure GetMealForDay
         /// </summary>

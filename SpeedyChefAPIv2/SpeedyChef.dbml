@@ -237,6 +237,7 @@
     <ElementType Name="RecipesForMealResult">
       <Column Name="Recname" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="Recid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>
