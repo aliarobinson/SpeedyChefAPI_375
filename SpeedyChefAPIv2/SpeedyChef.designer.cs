@@ -3453,16 +3453,30 @@ namespace SpeedyChefAPIv2
 	public partial class GetMealForDayResult
 	{
 		
+		private int _Mealid;
+		
 		private string _Mealname;
 		
 		private System.Nullable<int> _Mealsize;
 		
-		private string _Recname;
-		
-		private string _Recdesc;
-		
 		public GetMealForDayResult()
 		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealid", DbType="Int NOT NULL")]
+		public int Mealid
+		{
+			get
+			{
+				return this._Mealid;
+			}
+			set
+			{
+				if ((this._Mealid != value))
+				{
+					this._Mealid = value;
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealname", DbType="VarChar(50)")]
@@ -3493,38 +3507,6 @@ namespace SpeedyChefAPIv2
 				if ((this._Mealsize != value))
 				{
 					this._Mealsize = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(255)")]
-		public string Recname
-		{
-			get
-			{
-				return this._Recname;
-			}
-			set
-			{
-				if ((this._Recname != value))
-				{
-					this._Recname = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recdesc", DbType="VarChar(255)")]
-		public string Recdesc
-		{
-			get
-			{
-				return this._Recdesc;
-			}
-			set
-			{
-				if ((this._Recdesc != value))
-				{
-					this._Recdesc = value;
 				}
 			}
 		}
