@@ -49,6 +49,7 @@ namespace SpeedyChefApi.Controllers
 
         public ActionResult Search(string inputKeywords, string ordertype, string ascending)
         {
+            Dictionary<string, List<SearchSingleKeywordResult>> resultListDict = new Dictionary<string, List<SearchSingleKeywordResult>>();
             if (inputKeywords == null)
             {
                 return Json(null, JsonRequestBehavior.AllowGet);
@@ -62,15 +63,15 @@ namespace SpeedyChefApi.Controllers
             }
             foreach (string keyword in keywordList)
             {
-                if (tempRes != null)
+                resultListDict[keyword] = new List<SearchSingleKeywordResult>(scdc.SearchSingleKeyword(keyword, ordertype, ascending));
+                if (tempRes == null)
                 {
-                    tempRes = tempRes.Union(scdc.SearchSingleKeyword(keyword, ordertype, ascending), new SearchSingleComparer());
+                    tempRes = resultListDict[keyword];
                 }
-                else 
-                {
-                    IEnumerable<SearchSingleKeywordResult> firstRes = new List<SearchSingleKeywordResult>();
-                    tempRes = firstRes.Union(scdc.SearchSingleKeyword(keyword, ordertype, ascending), new SearchSingleComparer());
-                }
+            }
+            foreach (string currKey in resultListDict.Keys)
+            {
+                tempRes = tempRes.Intersect(resultListDict[currKey], new SearchSingleComparer());
             }
             return Json(tempRes, JsonRequestBehavior.AllowGet);
         }
