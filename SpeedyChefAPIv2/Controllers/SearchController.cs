@@ -64,12 +64,12 @@ namespace SpeedyChefApi.Controllers
             {
                 if (tempRes != null)
                 {
-                    tempRes = tempRes.Union(scdc.SearchSingleKeyword(inputKeywords, ordertype, ascending), new SearchSingleComparer());
+                    tempRes = tempRes.Union(scdc.SearchSingleKeyword(keyword, ordertype, ascending), new SearchSingleComparer());
                 }
                 else 
                 {
                     IEnumerable<SearchSingleKeywordResult> firstRes = new List<SearchSingleKeywordResult>();
-                    tempRes = firstRes.Union(scdc.SearchSingleKeyword(inputKeywords, ordertype, ascending), new SearchSingleComparer());
+                    tempRes = firstRes.Union(scdc.SearchSingleKeyword(keyword, ordertype, ascending), new SearchSingleComparer());
                 }
             }
             return Json(tempRes, JsonRequestBehavior.AllowGet);
