@@ -226,10 +226,9 @@
     <Parameter Name="user" Type="System.String" DbType="VarChar(30)" />
     <Parameter Name="date" Type="System.String" DbType="VarChar(10)" />
     <ElementType Name="GetMealForDayResult">
+      <Column Name="Mealid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Mealname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Mealsize" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Recname" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>
