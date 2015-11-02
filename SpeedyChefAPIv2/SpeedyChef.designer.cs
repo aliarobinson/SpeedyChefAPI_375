@@ -321,6 +321,13 @@ namespace SpeedyChefAPIv2
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user, date);
 			return ((ISingleResult<GetMealForDayResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.RecipesForMeal")]
+		public ISingleResult<RecipesForMealResult> RecipesForMeal([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string user, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> mealId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user, mealId);
+			return ((ISingleResult<RecipesForMealResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Agenda")]
@@ -3507,6 +3514,50 @@ namespace SpeedyChefAPIv2
 				if ((this._Mealsize != value))
 				{
 					this._Mealsize = value;
+				}
+			}
+		}
+	}
+	
+	public partial class RecipesForMealResult
+	{
+		
+		private string _Recname;
+		
+		private int _Recid;
+		
+		public RecipesForMealResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(255)")]
+		public string Recname
+		{
+			get
+			{
+				return this._Recname;
+			}
+			set
+			{
+				if ((this._Recname != value))
+				{
+					this._Recname = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recid", DbType="Int NOT NULL")]
+		public int Recid
+		{
+			get
+			{
+				return this._Recid;
+			}
+			set
+			{
+				if ((this._Recid != value))
+				{
+					this._Recid = value;
 				}
 			}
 		}
