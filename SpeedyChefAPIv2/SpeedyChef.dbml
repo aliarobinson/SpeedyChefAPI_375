@@ -184,16 +184,6 @@
       <Column Name="Groupadmin" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.GetMealForDay" Method="GetMealForDay">
-    <Parameter Name="user" Type="System.String" DbType="VarChar(30)" />
-    <Parameter Name="date" Type="System.String" DbType="VarChar(10)" />
-    <ElementType Name="GetMealForDayResult">
-      <Column Name="Mealname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Mealsize" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Recname" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.MealNameExists" Method="MealNameExists">
     <Parameter Name="user" Type="System.String" DbType="VarChar(30)" />
     <Parameter Name="date" Type="System.String" DbType="VarChar(10)" />
@@ -224,11 +214,22 @@
       <Column Name="Rectime" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SET_StoveInfo" Method="SET_StoveInfo">
+  <Function Name="dbo.SET_StoveInfo" Method="SET_StoveInfo" IsComposable="true">
     <Parameter Name="user" Type="System.String" DbType="NVarChar(30)" />
     <Parameter Name="passwd" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="tool" Type="System.Int32" DbType="Int" />
     <Parameter Name="burners" Type="System.Int32" DbType="Int" />
     <Parameter Name="pwr" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.GetMealForDay" Method="GetMealForDay">
+    <Parameter Name="user" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="date" Type="System.String" DbType="VarChar(10)" />
+    <ElementType Name="GetMealForDayResult">
+      <Column Name="Mealname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Mealsize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Recname" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </ElementType>
   </Function>
 </Database>

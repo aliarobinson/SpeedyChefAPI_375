@@ -280,13 +280,6 @@ namespace SpeedyChefAPIv2
 			return ((ISingleResult<Get_GroupsResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetMealForDay")]
-		public ISingleResult<GetMealForDayResult> GetMealForDay([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string user, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string date)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user, date);
-			return ((ISingleResult<GetMealForDayResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MealNameExists")]
 		public int MealNameExists([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string user, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string date, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> size, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] ref System.Nullable<int> returnValue)
 		{
@@ -316,10 +309,17 @@ namespace SpeedyChefAPIv2
 			return ((ISingleResult<SearchSingleKeywordResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SET_StoveInfo")]
-		public void SET_StoveInfo([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(30)")] string user, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(255)")] string passwd, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> tool, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> burners, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pwr)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SET_StoveInfo", IsComposable=true)]
+		public object SET_StoveInfo([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(30)")] string user, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(255)")] string passwd, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> tool, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> burners, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string pwr)
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user, passwd, tool, burners, pwr);
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user, passwd, tool, burners, pwr).ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetMealForDay")]
+		public ISingleResult<GetMealForDayResult> GetMealForDay([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string user, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string date)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user, date);
+			return ((ISingleResult<GetMealForDayResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -3352,86 +3352,6 @@ namespace SpeedyChefAPIv2
 		}
 	}
 	
-	public partial class GetMealForDayResult
-	{
-		
-		private string _Mealname;
-		
-		private System.Nullable<int> _Mealsize;
-		
-		private string _Recname;
-		
-		private string _Recdesc;
-		
-		public GetMealForDayResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealname", DbType="VarChar(50)")]
-		public string Mealname
-		{
-			get
-			{
-				return this._Mealname;
-			}
-			set
-			{
-				if ((this._Mealname != value))
-				{
-					this._Mealname = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealsize", DbType="Int")]
-		public System.Nullable<int> Mealsize
-		{
-			get
-			{
-				return this._Mealsize;
-			}
-			set
-			{
-				if ((this._Mealsize != value))
-				{
-					this._Mealsize = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(255)")]
-		public string Recname
-		{
-			get
-			{
-				return this._Recname;
-			}
-			set
-			{
-				if ((this._Recname != value))
-				{
-					this._Recname = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recdesc", DbType="VarChar(255)")]
-		public string Recdesc
-		{
-			get
-			{
-				return this._Recdesc;
-			}
-			set
-			{
-				if ((this._Recdesc != value))
-				{
-					this._Recdesc = value;
-				}
-			}
-		}
-	}
-	
 	public partial class SearchSingleKeywordResult
 	{
 		
@@ -3525,6 +3445,86 @@ namespace SpeedyChefAPIv2
 				if ((this._Rectime != value))
 				{
 					this._Rectime = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetMealForDayResult
+	{
+		
+		private string _Mealname;
+		
+		private System.Nullable<int> _Mealsize;
+		
+		private string _Recname;
+		
+		private string _Recdesc;
+		
+		public GetMealForDayResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealname", DbType="VarChar(50)")]
+		public string Mealname
+		{
+			get
+			{
+				return this._Mealname;
+			}
+			set
+			{
+				if ((this._Mealname != value))
+				{
+					this._Mealname = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealsize", DbType="Int")]
+		public System.Nullable<int> Mealsize
+		{
+			get
+			{
+				return this._Mealsize;
+			}
+			set
+			{
+				if ((this._Mealsize != value))
+				{
+					this._Mealsize = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(255)")]
+		public string Recname
+		{
+			get
+			{
+				return this._Recname;
+			}
+			set
+			{
+				if ((this._Recname != value))
+				{
+					this._Recname = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recdesc", DbType="VarChar(255)")]
+		public string Recdesc
+		{
+			get
+			{
+				return this._Recdesc;
+			}
+			set
+			{
+				if ((this._Recdesc != value))
+				{
+					this._Recdesc = value;
 				}
 			}
 		}
