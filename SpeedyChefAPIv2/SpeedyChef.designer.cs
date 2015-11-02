@@ -3461,14 +3461,6 @@ namespace SpeedyChefAPIv2
 		
 		private string _Recdesc;
 		
-		private string _Mealname1;
-		
-		private System.Nullable<int> _Mealsize1;
-		
-		private string _Recname1;
-		
-		private string _Recdesc1;
-		
 		public GetMealForDayResult()
 		{
 		}
@@ -3505,7 +3497,7 @@ namespace SpeedyChefAPIv2
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(255)")]
 		public string Recname
 		{
 			get
@@ -3533,70 +3525,6 @@ namespace SpeedyChefAPIv2
 				if ((this._Recdesc != value))
 				{
 					this._Recdesc = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealname1", DbType="VarChar(50)")]
-		public string Mealname1
-		{
-			get
-			{
-				return this._Mealname1;
-			}
-			set
-			{
-				if ((this._Mealname1 != value))
-				{
-					this._Mealname1 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealsize1", DbType="Int")]
-		public System.Nullable<int> Mealsize1
-		{
-			get
-			{
-				return this._Mealsize1;
-			}
-			set
-			{
-				if ((this._Mealsize1 != value))
-				{
-					this._Mealsize1 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname1", DbType="VarChar(50)")]
-		public string Recname1
-		{
-			get
-			{
-				return this._Recname1;
-			}
-			set
-			{
-				if ((this._Recname1 != value))
-				{
-					this._Recname1 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recdesc1", DbType="VarChar(255)")]
-		public string Recdesc1
-		{
-			get
-			{
-				return this._Recdesc1;
-			}
-			set
-			{
-				if ((this._Recdesc1 != value))
-				{
-					this._Recdesc1 = value;
 				}
 			}
 		}
