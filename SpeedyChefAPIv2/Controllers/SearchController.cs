@@ -50,6 +50,7 @@ namespace SpeedyChefApi.Controllers
 
         public ActionResult Search(string inputKeywords, string ordertype, string ascending)
         {
+            //At least one letter must be submitted to begin searching
             Regex rx = new Regex("^.*(?=.*[a - zA - Z]).*$");
 
             // Find matches.
