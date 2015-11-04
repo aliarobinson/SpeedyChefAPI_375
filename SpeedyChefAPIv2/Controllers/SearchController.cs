@@ -92,7 +92,7 @@ namespace SpeedyChefApi.Controllers
             Regex rx = new Regex("^.*(?=.*[a - zA - Z]).*$");
 
             // Find matches.
-            Match matched = rx.Match(inputKeywords);
+            Match matched = rx.Match(subgenre);
 
             System.Diagnostics.Debug.WriteLine(matched.ToString());
             if (!matched.Success)
