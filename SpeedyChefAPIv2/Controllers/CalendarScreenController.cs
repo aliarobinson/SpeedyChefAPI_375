@@ -165,6 +165,26 @@ namespace SpeedyChefApi.Controllers
             return Json(returnValue, JsonRequestBehavior.AllowGet);
         }
 
+
+        /// <summary>
+        /// Removes a meal from the agenda. Will remove dependencies
+        /// from other tables. Is not implemented to handle bookmarked dates,
+        /// but neither is the UI at the moment of this creation.
+        /// </summary>
+        /// <param name="user">Username for agenda</param>
+        /// <param name="mealid">Meal id to remove</param>
+        /// <example>/CalendarScreen/RemoveMealFromTables?user=tester&mealid=100</example>
+        public void RemoveMealFromTables(string user, int mealid)
+        {
+            if (user == null)
+            {
+                return;
+            }
+            SpeedyChefDataContext scdc = new SpeedyChefDataContext();
+            scdc.RemoveMealFromTables(user, mealid);
+            return;
+        }
+
         /// <summary>
         /// Removes a meal from a certain day of the agenda.
         /// </summary>
