@@ -50,30 +50,22 @@ namespace SpeedyChefApi.Controllers
 
         public ActionResult Search(string inputKeywords, string ordertype, string ascending)
         {
-            Regex rx = new Regex(@"^(?=.*[a-zA-Z])$",
-            RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            Regex rx = new Regex("^.*(?=.*[a - zA - Z]).*$");
 
             // Find matches.
-            MatchCollection matches = rx.Matches(inputKeywords);
+            Match matched = rx.Match(inputKeywords);
 
-            if (matches.Count == 0)
+            System.Diagnostics.Debug.WriteLine(matched.ToString());
+            if (!matched.Success)
             {
-                return Json(null, JsonRequestBehavior.AllowGet);
+                return Json(new List<SearchSingleKeywordResult>(), JsonRequestBehavior.AllowGet);
             }
             else
             {
                 Dictionary<string, List<SearchSingleKeywordResult>> resultListDict = new Dictionary<string, List<SearchSingleKeywordResult>>();
-                if (inputKeywords == null)
-                {
-                    return Json(null, JsonRequestBehavior.AllowGet);
-                }
                 string[] keywordList = inputKeywords.Split(',');
                 SpeedyChefDataContext scdc = new SpeedyChefDataContext();
                 IEnumerable<SearchSingleKeywordResult> tempRes = null;
-                if (keywordList == null)
-                {
-                    return Json(null, JsonRequestBehavior.AllowGet);
-                }
                 foreach (string keyword in keywordList)
                 {
                     resultListDict[keyword] = new List<SearchSingleKeywordResult>(scdc.SearchSingleKeyword(keyword, ordertype, ascending));
@@ -92,33 +84,25 @@ namespace SpeedyChefApi.Controllers
 
         public ActionResult SearchByUnion(string inputKeywords, string ordertype, string ascending, string subgenre)
         {
-            Regex rx = new Regex(@"^(?=.*[a-zA-Z])$",
-            RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            Dictionary<string, List<SearchSingleKeywordResult>> resultListDict = new Dictionary<string, List<SearchSingleKeywordResult>>();
+            Dictionary<string, List<SearchSingleKeywordResult>> resultSubgenreDict = new Dictionary<string, List<SearchSingleKeywordResult>>();
+            IEnumerable<SearchSingleKeywordResult> subgenreList = null;
+            IEnumerable<SearchSingleKeywordResult> helperList = null;
+            Regex rx = new Regex("^.*(?=.*[a - zA - Z]).*$");
 
             // Find matches.
-            MatchCollection matches = rx.Matches(inputKeywords);
+            Match matched = rx.Match(inputKeywords);
 
-            if (matches.Count == 0)
+            System.Diagnostics.Debug.WriteLine(matched.ToString());
+            if (!matched.Success)
             {
-                return Json(null, JsonRequestBehavior.AllowGet);
+                return Json(new List<SearchSingleKeywordResult>(), JsonRequestBehavior.AllowGet);
             }
             else
             {
-                Dictionary<string, List<SearchSingleKeywordResult>> resultListDict = new Dictionary<string, List<SearchSingleKeywordResult>>();
-                if (inputKeywords == null)
-                {
-                    return Json(null, JsonRequestBehavior.AllowGet);
-                }
                 string[] keywordList = inputKeywords.Split(',');
                 string[] subgenreKeywords = subgenre.Split(',');
                 SpeedyChefDataContext scdc = new SpeedyChefDataContext();
-                if (keywordList == null)
-                {
-                    return Json(null, JsonRequestBehavior.AllowGet);
-                }
-                Dictionary<string, List<SearchSingleKeywordResult>> resultSubgenreDict = new Dictionary<string, List<SearchSingleKeywordResult>>();
-                IEnumerable<SearchSingleKeywordResult> subgenreList = null;
-                IEnumerable<SearchSingleKeywordResult> helperList = null;
                 foreach (string subgenreKeyword in subgenreKeywords)
                 {
                     if (helperList == null)
