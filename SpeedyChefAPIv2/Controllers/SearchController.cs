@@ -51,7 +51,7 @@ namespace SpeedyChefApi.Controllers
         public ActionResult Search(string inputKeywords, string ordertype, string ascending)
         {
             //At least one letter must be submitted to begin searching
-            Regex rx = new Regex("^.*(?=.*[a - zA - Z]).*$");
+            Regex rx = new Regex("^\\d*[a-zA-Z][a-zA-Z0-9]*$");
 
             // Find matches.
             Match matched = rx.Match(inputKeywords);
@@ -89,12 +89,12 @@ namespace SpeedyChefApi.Controllers
             Dictionary<string, List<SearchSingleKeywordResult>> resultSubgenreDict = new Dictionary<string, List<SearchSingleKeywordResult>>();
             IEnumerable<SearchSingleKeywordResult> subgenreList = null;
             IEnumerable<SearchSingleKeywordResult> helperList = null;
-            Regex rx = new Regex("^.*(?=.*[a - zA - Z]).*$");
+            Regex rx = new Regex("^\\d*[a-zA-Z][a-zA-Z0-9]*$");
 
             // Find matches.
             Match matched = rx.Match(subgenre);
 
-            System.Diagnostics.Debug.WriteLine(matched.ToString());
+            System.Diagnostics.Debug.WriteLine(matched.Value.ToString());
             if (!matched.Success)
             {
                 return Json(new List<SearchSingleKeywordResult>(), JsonRequestBehavior.AllowGet);
