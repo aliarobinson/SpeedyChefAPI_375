@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.SqlClient;
 using SpeedyChefAPIv2;
+using System.Text.RegularExpressions;
 
 namespace SpeedyChefApi.Controllers
 {
@@ -49,31 +50,104 @@ namespace SpeedyChefApi.Controllers
 
         public ActionResult Search(string inputKeywords, string ordertype, string ascending)
         {
-            Dictionary<string, List<SearchSingleKeywordResult>> resultListDict = new Dictionary<string, List<SearchSingleKeywordResult>>();
-            if (inputKeywords == null)
+            Regex rx = new Regex(@"^(?=.*[a-zA-Z])$",
+            RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+            // Find matches.
+            MatchCollection matches = rx.Matches(inputKeywords);
+
+            if (matches.Count == 0)
             {
                 return Json(null, JsonRequestBehavior.AllowGet);
             }
-            string[] keywordList = inputKeywords.Split(',');
-            SpeedyChefDataContext scdc = new SpeedyChefDataContext();
-            IEnumerable<SearchSingleKeywordResult> tempRes = null;
-            if (keywordList == null)
+            else
             {
-                return Json(null, JsonRequestBehavior.AllowGet);
-            }
-            foreach (string keyword in keywordList)
-            {
-                resultListDict[keyword] = new List<SearchSingleKeywordResult>(scdc.SearchSingleKeyword(keyword, ordertype, ascending));
-                if (tempRes == null)
+                Dictionary<string, List<SearchSingleKeywordResult>> resultListDict = new Dictionary<string, List<SearchSingleKeywordResult>>();
+                if (inputKeywords == null)
                 {
-                    tempRes = resultListDict[keyword];
+                    return Json(null, JsonRequestBehavior.AllowGet);
                 }
+                string[] keywordList = inputKeywords.Split(',');
+                SpeedyChefDataContext scdc = new SpeedyChefDataContext();
+                IEnumerable<SearchSingleKeywordResult> tempRes = null;
+                if (keywordList == null)
+                {
+                    return Json(null, JsonRequestBehavior.AllowGet);
+                }
+                foreach (string keyword in keywordList)
+                {
+                    resultListDict[keyword] = new List<SearchSingleKeywordResult>(scdc.SearchSingleKeyword(keyword, ordertype, ascending));
+                    if (tempRes == null)
+                    {
+                        tempRes = resultListDict[keyword];
+                    }
+                }
+                foreach (string currKey in resultListDict.Keys)
+                {
+                    tempRes = tempRes.Intersect(resultListDict[currKey], new SearchSingleComparer());
+                }
+                return Json(tempRes, JsonRequestBehavior.AllowGet);
             }
-            foreach (string currKey in resultListDict.Keys)
+        }
+
+        public ActionResult SearchByUnion(string inputKeywords, string ordertype, string ascending, string subgenre)
+        {
+            Regex rx = new Regex(@"^(?=.*[a-zA-Z])$",
+            RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+            // Find matches.
+            MatchCollection matches = rx.Matches(inputKeywords);
+
+            if (matches.Count == 0)
             {
-                tempRes = tempRes.Intersect(resultListDict[currKey], new SearchSingleComparer());
+                return Json(null, JsonRequestBehavior.AllowGet);
             }
-            return Json(tempRes, JsonRequestBehavior.AllowGet);
+            else
+            {
+                Dictionary<string, List<SearchSingleKeywordResult>> resultListDict = new Dictionary<string, List<SearchSingleKeywordResult>>();
+                if (inputKeywords == null)
+                {
+                    return Json(null, JsonRequestBehavior.AllowGet);
+                }
+                string[] keywordList = inputKeywords.Split(',');
+                string[] subgenreKeywords = subgenre.Split(',');
+                SpeedyChefDataContext scdc = new SpeedyChefDataContext();
+                if (keywordList == null)
+                {
+                    return Json(null, JsonRequestBehavior.AllowGet);
+                }
+                Dictionary<string, List<SearchSingleKeywordResult>> resultSubgenreDict = new Dictionary<string, List<SearchSingleKeywordResult>>();
+                IEnumerable<SearchSingleKeywordResult> subgenreList = null;
+                IEnumerable<SearchSingleKeywordResult> helperList = null;
+                foreach (string subgenreKeyword in subgenreKeywords)
+                {
+                    if (helperList == null)
+                    {
+                        subgenreList = new List<SearchSingleKeywordResult>(scdc.SearchSingleKeyword(subgenreKeyword, ordertype, ascending));
+                        helperList = new List<SearchSingleKeywordResult>(scdc.SearchSingleKeyword(subgenreKeyword, ordertype, ascending));
+                    }
+                    resultSubgenreDict[subgenreKeyword] = new List<SearchSingleKeywordResult>(scdc.SearchSingleKeyword(subgenreKeyword, ordertype, ascending));
+                }
+                foreach (string subgenreKey in resultSubgenreDict.Keys)
+                {
+                    subgenreList = subgenreList.Intersect(resultSubgenreDict[subgenreKey], new SearchSingleComparer());
+                    helperList = subgenreList.Intersect(resultSubgenreDict[subgenreKey], new SearchSingleComparer());
+                }
+                foreach (string keyword in keywordList)
+                {
+                    if (subgenreList == null)
+                    {
+                        subgenreList = new List<SearchSingleKeywordResult>(scdc.SearchSingleKeyword(keyword, ordertype, ascending));
+                    }
+                    resultListDict[keyword] = new List<SearchSingleKeywordResult>(scdc.SearchSingleKeyword(keyword, ordertype, ascending));
+                }
+                foreach (string currKey in resultListDict.Keys)
+                {
+                    subgenreList = subgenreList.Intersect(resultListDict[currKey], new SearchSingleComparer());
+                    helperList = helperList.Except(resultListDict[currKey], new SearchSingleComparer());
+                }
+                return Json(subgenreList.Concat(helperList), JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }
