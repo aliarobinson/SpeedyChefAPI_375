@@ -44,6 +44,31 @@ namespace SpeedyChefApi.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Returns infomation about given recipe for id
+        /// </summary>
+        /// <param name="recid">Recipe id</param>
+        /// <returns>Json about recipe</returns>
+        /// <example>/CalendarScreen/GetRecipe?recid=2</example>
+        public ActionResult GetRecipe(int recid)
+        {
+            SpeedyChefDataContext sdcd = new SpeedyChefDataContext();
+            return Json(sdcd.RecipeInfo(recid), JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// Inserts recipe with meal
+        /// </summary>
+        /// <param name="mealId">Meal id to add recipe with</param>
+        /// <param name="recId">Recipe id to add meal to</param>
+        /// <example>/CalendarScreen/InsertRecForMeal?mealId=13&recId=2</example>
+        public void InsertRecForMeal (int mealId, int recId)
+        {
+            SpeedyChefDataContext scdc = new SpeedyChefDataContext();
+            scdc.InsertRecipeForMeal(mealId, recId);
+
+        }
+
 
         /// <summary>
         /// Used to get recipes for a meal to be displayed. 

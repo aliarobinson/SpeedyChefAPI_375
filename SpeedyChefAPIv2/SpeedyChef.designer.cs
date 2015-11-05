@@ -335,6 +335,20 @@ namespace SpeedyChefAPIv2
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user, mealId);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.RecipeInfo")]
+		public ISingleResult<RecipeInfoResult> RecipeInfo([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> recipeid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), recipeid);
+			return ((ISingleResult<RecipeInfoResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertRecipeForMeal")]
+		public int InsertRecipeForMeal([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> mealId, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> recId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), mealId, recId);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Agenda")]
@@ -3583,6 +3597,50 @@ namespace SpeedyChefAPIv2
 				if ((this._Recdesc != value))
 				{
 					this._Recdesc = value;
+				}
+			}
+		}
+	}
+	
+	public partial class RecipeInfoResult
+	{
+		
+		private int _Recid;
+		
+		private string _Recname;
+		
+		public RecipeInfoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recid", DbType="Int NOT NULL")]
+		public int Recid
+		{
+			get
+			{
+				return this._Recid;
+			}
+			set
+			{
+				if ((this._Recid != value))
+				{
+					this._Recid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(255)")]
+		public string Recname
+		{
+			get
+			{
+				return this._Recname;
+			}
+			set
+			{
+				if ((this._Recname != value))
+				{
+					this._Recname = value;
 				}
 			}
 		}
