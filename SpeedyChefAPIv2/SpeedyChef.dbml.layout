@@ -126,14 +126,14 @@
         <classShapeMoniker Id="1e946187-2860-4a45-b53b-01c05334f322" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 12.1675439453125); (12.5 : 12.1675439453125); (12.5 : 8.56899251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 12.1675439453125); (5.79166666666667 : 12.1675439453125 : JumpStart); (5.95833333333333 : 12.1675439453125 : JumpEnd); (12.5 : 12.1675439453125); (12.5 : 8.56899251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SpeedyChefDataContext/Meal/Meal_Meal_Recipe" />
       <nodes>
         <classShapeMoniker Id="b3b36e8c-fc50-4a3d-a6f9-b78d2c36c92e" />
         <classShapeMoniker Id="1a07f748-fbfa-4454-a4f4-d43b455a1367" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 6.84699625651042); (3.5 : 6.84699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 6.84699625651042); (3.19791666666667 : 6.84699625651042 : JumpStart); (3.45833333333333 : 6.84699625651042 : JumpEnd); (3.5 : 6.84699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SpeedyChefDataContext/Member/Member_Agenda" />
       <nodes>
         <classShapeMoniker Id="26a29ef2-03e0-4205-bea6-bc9765f255f0" />
@@ -161,7 +161,7 @@
         <classShapeMoniker Id="b10b57d4-f0c6-4f9e-aa06-df18d22c26d6" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 8.61099812825521); (6.25 : 8.61099812825521)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 8.61099812825521); (5.97916666666667 : 8.61099812825521 : JumpStart); (6.14583333333333 : 8.61099812825521 : JumpEnd); (6.25 : 8.61099812825521)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SpeedyChefDataContext/Member_Group/Member_Group_Group_Tool" />
       <nodes>
         <classShapeMoniker Id="63d3782b-12a3-4c50-b83f-1c245f849513" />
@@ -196,7 +196,7 @@
         <classShapeMoniker Id="b6d263c9-6c2c-4245-a1d7-3e55d63d95d9" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 8.65292799514223); (3.06607443490112 : 8.33685356024111 : JumpStart); (3.18392556509888 : 8.21900243004335 : JumpEnd); (3.375 : 8.02792799514223); (3.375 : 5.69794840494792); (9.66666666666667 : 5.69794840494792 : JumpStart); (9.83333333333333 : 5.69794840494792 : JumpEnd); (11.5 : 5.69794840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 8.65292799514223); (3.375 : 8.02792799514223); (3.375 : 5.69794840494792); (11.5 : 5.69794840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SpeedyChefDataContext/Task/Task_Recipe_Task" />
       <nodes>
         <classShapeMoniker Id="1f639409-066a-4a97-b760-e96b266dd3a5" />
@@ -210,7 +210,7 @@
         <classShapeMoniker Id="73108c33-704f-491e-8d8b-8e5e82296697" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 8.63107052068309); (3.06607443490112 : 8.31499608578197 : JumpStart); (3.18392556509888 : 8.19714495558421 : JumpEnd); (3.28125 : 8.09982052068309); (3.28125 : 4.15667077018229); (3.5 : 4.15667077018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 8.63107052068309); (3.28125 : 8.09982052068309); (3.28125 : 4.15667077018229); (3.5 : 4.15667077018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SpeedyChefDataContext/Task/Task_Task_Food_Item" />
       <nodes>
         <classShapeMoniker Id="1f639409-066a-4a97-b760-e96b266dd3a5" />
