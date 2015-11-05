@@ -50,8 +50,10 @@ namespace SpeedyChefApi.Controllers
 
         public ActionResult Search(string inputKeywords, string ordertype, string ascending)
         {
+            string[] keywordList = inputKeywords.Split(',');
+
             //At least one letter must be submitted to begin searching
-            Regex rx = new Regex("^\\d*[a-zA-Z][a-zA-Z0-9]*$");
+            Regex rx = new Regex("^[A-Za-z,]+$");
 
             // Find matches.
             Match matched = rx.Match(inputKeywords);
@@ -64,7 +66,6 @@ namespace SpeedyChefApi.Controllers
             else
             {
                 Dictionary<string, List<SearchSingleKeywordResult>> resultListDict = new Dictionary<string, List<SearchSingleKeywordResult>>();
-                string[] keywordList = inputKeywords.Split(',');
                 SpeedyChefDataContext scdc = new SpeedyChefDataContext();
                 IEnumerable<SearchSingleKeywordResult> tempRes = null;
                 foreach (string keyword in keywordList)
@@ -89,7 +90,9 @@ namespace SpeedyChefApi.Controllers
             Dictionary<string, List<SearchSingleKeywordResult>> resultSubgenreDict = new Dictionary<string, List<SearchSingleKeywordResult>>();
             IEnumerable<SearchSingleKeywordResult> subgenreList = null;
             IEnumerable<SearchSingleKeywordResult> helperList = null;
-            Regex rx = new Regex("^\\d*[a-zA-Z][a-zA-Z0-9]*$");
+            string[] keywordList = inputKeywords.Split(',');
+            string[] subgenreKeywords = subgenre.Split(',');
+            Regex rx = new Regex("^[A-Za-z,]+$");
 
             // Find matches.
             Match matched = rx.Match(subgenre);
@@ -101,8 +104,6 @@ namespace SpeedyChefApi.Controllers
             }
             else
             {
-                string[] keywordList = inputKeywords.Split(',');
-                string[] subgenreKeywords = subgenre.Split(',');
                 SpeedyChefDataContext scdc = new SpeedyChefDataContext();
                 foreach (string subgenreKeyword in subgenreKeywords)
                 {
