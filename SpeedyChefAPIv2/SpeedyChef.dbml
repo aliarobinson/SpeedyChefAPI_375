@@ -245,4 +245,48 @@
     <Parameter Name="mealId" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.RecipeInfo" Method="RecipeInfo">
+    <Parameter Name="recipeid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="RecipeInfoResult">
+      <Column Name="Recid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Recname" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Recdiff" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rectime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.RecipeTasks" Method="RecipeTasks">
+    <Parameter Name="recipeid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="RecipeTasksResult">
+      <Column Name="Taskid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Taskname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Taskdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Tasktime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Recid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Taskid1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.RecipeIngredients" Method="RecipeIngredients">
+    <Parameter Name="recipeid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="RecipeIngredientsResult">
+      <Column Name="Foodname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Taskid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Foodname1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Recid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Taskid1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TasksForMeal" Method="TasksForMeal">
+    <Parameter Name="mealid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="TasksForMealResult">
+      <Column Name="Taskid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Taskname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Taskdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Tasktime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Recid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Taskid1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mealid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Recid1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>
