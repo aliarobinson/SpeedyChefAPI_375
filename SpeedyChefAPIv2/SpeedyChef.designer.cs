@@ -363,6 +363,20 @@ namespace SpeedyChefAPIv2
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), recipeid);
 			return ((ISingleResult<RecipeTasksResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AddMeal")]
+		public ISingleResult<AddMealResult> AddMeal([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string user, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string mealName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string date, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> size)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user, mealName, date, size);
+			return ((ISingleResult<AddMealResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AddRecipe")]
+		public int AddRecipe([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> mealId, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> recId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), mealId, recId);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Agenda")]
@@ -3923,6 +3937,32 @@ namespace SpeedyChefAPIv2
 				if ((this._Taskid1 != value))
 				{
 					this._Taskid1 = value;
+				}
+			}
+		}
+	}
+	
+	public partial class AddMealResult
+	{
+		
+		private int _Mealid;
+		
+		public AddMealResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealid", DbType="Int NOT NULL")]
+		public int Mealid
+		{
+			get
+			{
+				return this._Mealid;
+			}
+			set
+			{
+				if ((this._Mealid != value))
+				{
+					this._Mealid = value;
 				}
 			}
 		}
