@@ -160,6 +160,7 @@
     <Compile Include="Controllers\CalendarScreenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PreferencesController.cs" />
+    <Compile Include="Controllers\RecipeInfoController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\StepsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

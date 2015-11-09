@@ -44,6 +44,50 @@ namespace SpeedyChefApi.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Returns infomation about given recipe for id
+        /// </summary>
+        /// <param name="recid">Recipe id</param>
+        /// <returns>Json about recipe</returns>
+        /// <example>/CalendarScreen/GetRecipe?recid=2</example>
+        public ActionResult GetRecipe(int recid)
+        {
+            SpeedyChefDataContext sdcd = new SpeedyChefDataContext();
+            return Json(sdcd.RecipeInfo(recid), JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// Add meal to database
+        /// </summary>
+        /// <param name="user">username</param>
+        /// <param name="mealname">meal name</param>
+        /// <param name="date">date</param>
+        /// <param name="size">size of meal</param>
+        /// <returns>Meal id</returns>
+        /// <example>/CalendarScreen/AddMeal?user=tester&mealname=hello&date=2015-11-05&size=5</example>
+        public ActionResult AddMeal(string user, string mealname, string date, int size)
+        {
+            if (user == null || mealname == null || date == null)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
+            SpeedyChefDataContext scdc = new SpeedyChefDataContext();
+            return Json(scdc.AddMeal(user, mealname, date, size), JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// Inserts recipe with meal
+        /// </summary>
+        /// <param name="mealId">Meal id to add recipe with</param>
+        /// <param name="recId">Recipe id to add meal to</param>
+        /// <example>/CalendarScreen/InsertRecForMeal?mealId=13&recId=2</example>
+        public void InsertRecForMeal (int mealId, int recId)
+        {
+            SpeedyChefDataContext scdc = new SpeedyChefDataContext();
+            scdc.InsertRecipeForMeal(mealId, recId);
+
+        }
+
 
         /// <summary>
         /// Used to get recipes for a meal to be displayed. 
@@ -87,6 +131,19 @@ namespace SpeedyChefApi.Controllers
             
             gmfdr = scdc.GetMealForDay(user, date);
             return Json(gmfdr, JsonRequestBehavior.AllowGet);
+        }
+
+
+        /// <summary>
+        /// Adds recipes to meal
+        /// </summary>
+        /// <param name="mealid"> Meal id</param>
+        /// <param name="recid">Recipe id</param>
+        /// <example>/CalendarScreen/AddRecipeForMeal?mealid=2&recid=6</example>
+        public void AddRecipeForMeal(int mealid, int recid)
+        {
+            SpeedyChefDataContext scdc = new SpeedyChefDataContext();
+            scdc.AddRecipe(mealid, recid);
         }
 
         /// <summary>
@@ -163,6 +220,26 @@ namespace SpeedyChefApi.Controllers
             }
 
             return Json(returnValue, JsonRequestBehavior.AllowGet);
+        }
+
+
+        /// <summary>
+        /// Removes a meal from the agenda. Will remove dependencies
+        /// from other tables. Is not implemented to handle bookmarked dates,
+        /// but neither is the UI at the moment of this creation.
+        /// </summary>
+        /// <param name="user">Username for agenda</param>
+        /// <param name="mealid">Meal id to remove</param>
+        /// <example>/CalendarScreen/RemoveMealFromTables?user=tester&mealid=100</example>
+        public void RemoveMealFromTables(string user, int mealid)
+        {
+            if (user == null)
+            {
+                return;
+            }
+            SpeedyChefDataContext scdc = new SpeedyChefDataContext();
+            scdc.RemoveMealFromTables(user, mealid);
+            return;
         }
 
         /// <summary>
