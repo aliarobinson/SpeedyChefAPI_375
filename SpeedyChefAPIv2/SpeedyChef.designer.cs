@@ -3701,38 +3701,6 @@ namespace SpeedyChefAPIv2
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(255)")]
-		public string Recname
-		{
-			get
-			{
-				return this._Recname;
-			}
-			set
-			{
-				if ((this._Recname != value))
-				{
-					this._Recname = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recdesc", DbType="VarChar(255)")]
-		public string Recdesc
-		{
-			get
-			{
-				return this._Recdesc;
-			}
-			set
-			{
-				if ((this._Recdesc != value))
-				{
-					this._Recdesc = value;
-				}
-			}
-		}
 	}
 	
 	public partial class RecipeInfoResult
