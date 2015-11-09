@@ -3798,6 +3798,18 @@ namespace SpeedyChefAPIv2
 				if ((this._Taskname != value))
 				{
 					this._Taskname = value;
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealname", DbType="VarChar(50)")]
+		public string Mealname
+		{
+			get
+			{
+				return this._Mealname;
+			}
+			set
+			{
+				if ((this._Mealname != value))
+				{
+					this._Mealname = value;
 				}
 			}
 		}
@@ -3814,6 +3826,18 @@ namespace SpeedyChefAPIv2
 				if ((this._Taskdesc != value))
 				{
 					this._Taskdesc = value;
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealsize", DbType="Int")]
+		public System.Nullable<int> Mealsize
+		{
+			get
+			{
+				return this._Mealsize;
+			}
+			set
+			{
+				if ((this._Mealsize != value))
+				{
+					this._Mealsize = value;
 				}
 			}
 		}
@@ -3930,6 +3954,18 @@ namespace SpeedyChefAPIv2
 				if ((this._Taskid != value))
 				{
 					this._Taskid = value;
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(255)")]
+		public string Recname
+		{
+			get
+			{
+				return this._Recname;
+			}
+			set
+			{
+				if ((this._Recname != value))
+				{
+					this._Recname = value;
 				}
 			}
 		}
@@ -4036,6 +4072,18 @@ namespace SpeedyChefAPIv2
 				if ((this._Mealid != value))
 				{
 					this._Mealid = value;
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recdesc", DbType="VarChar(255)")]
+		public string Recdesc
+		{
+			get
+			{
+				return this._Recdesc;
+			}
+			set
+			{
+				if ((this._Recdesc != value))
+				{
+					this._Recdesc = value;
 				}
 			}
 		}
