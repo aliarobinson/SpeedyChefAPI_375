@@ -3646,10 +3646,6 @@ namespace SpeedyChefAPIv2
 		
 		private System.Nullable<int> _Mealsize;
 		
-		private string _Recname;
-		
-		private string _Recdesc;
-		
 		public GetMealsBetweenDatesResult()
 		{
 		}
@@ -3765,6 +3761,10 @@ namespace SpeedyChefAPIv2
 		private int _Mealid;
 		
 		private int _Recid1;
+
+        private int _Mealsize;
+
+        private string _Mealname;
 		
 		public TasksForMealResult()
 		{
@@ -3786,18 +3786,22 @@ namespace SpeedyChefAPIv2
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Taskname", DbType="VarChar(50)")]
-		public string Taskname
-		{
-			get
-			{
-				return this._Taskname;
-			}
-			set
-			{
-				if ((this._Taskname != value))
-				{
-					this._Taskname = value;
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Taskname", DbType = "VarChar(50)")]
+        public string Taskname
+        {
+            get
+            {
+                return this._Taskname;
+            }
+            set
+            {
+                if ((this._Taskname != value))
+                {
+                    this._Taskname = value;
+                }
+            }
+        }
+
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealname", DbType="VarChar(50)")]
 		public string Mealname
 		{
@@ -3814,18 +3818,22 @@ namespace SpeedyChefAPIv2
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Taskdesc", DbType="VarChar(255)")]
-		public string Taskdesc
-		{
-			get
-			{
-				return this._Taskdesc;
-			}
-			set
-			{
-				if ((this._Taskdesc != value))
-				{
-					this._Taskdesc = value;
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Taskdesc", DbType = "VarChar(255)")]
+        public string Taskdesc
+        {
+            get
+            {
+                return this._Taskdesc;
+            }
+            set
+            {
+                if ((this._Taskdesc != value))
+                {
+                    this._Taskdesc = value;
+                }
+            }
+        }
+
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealsize", DbType="Int")]
 		public System.Nullable<int> Mealsize
 		{
@@ -3837,7 +3845,7 @@ namespace SpeedyChefAPIv2
 			{
 				if ((this._Mealsize != value))
 				{
-					this._Mealsize = value;
+					this._Mealsize = (int) value;
 				}
 			}
 		}
@@ -3935,6 +3943,8 @@ namespace SpeedyChefAPIv2
 		private System.Nullable<int> _Tasktime;
 		
 		private int _Recid;
+
+        private string _Recname;
 		
 		private int _Taskid1;
 		
@@ -3942,18 +3952,22 @@ namespace SpeedyChefAPIv2
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Taskid", DbType="Int NOT NULL")]
-		public int Taskid
-		{
-			get
-			{
-				return this._Taskid;
-			}
-			set
-			{
-				if ((this._Taskid != value))
-				{
-					this._Taskid = value;
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Taskid", DbType = "Int NOT NULL")]
+        public int Taskid
+        {
+            get
+            {
+                return this._Taskid;
+            }
+            set
+            {
+                if ((this._Taskid != value))
+                {
+                    this._Taskid = value;
+                }
+            }
+        }
+
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(255)")]
 		public string Recname
 		{
@@ -4055,23 +4069,28 @@ namespace SpeedyChefAPIv2
 	{
 		
 		private int _Mealid;
+        private string _Recdesc;
 		
 		public AddMealResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealid", DbType="Int NOT NULL")]
-		public int Mealid
-		{
-			get
-			{
-				return this._Mealid;
-			}
-			set
-			{
-				if ((this._Mealid != value))
-				{
-					this._Mealid = value;
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Mealid", DbType = "Int NOT NULL")]
+        public int Mealid
+        {
+            get
+            {
+                return this._Mealid;
+            }
+            set
+            {
+                if ((this._Mealid != value))
+                {
+                    this._Mealid = value;
+                }
+            }
+        }
+
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recdesc", DbType="VarChar(255)")]
 		public string Recdesc
 		{
