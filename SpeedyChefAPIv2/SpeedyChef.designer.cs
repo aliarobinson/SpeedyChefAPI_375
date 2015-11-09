@@ -3597,10 +3597,6 @@ namespace SpeedyChefAPIv2
 		
 		private System.Nullable<int> _Mealsize;
 		
-		private string _Recname;
-		
-		private string _Recdesc;
-		
 		public GetMealsBetweenDatesResult()
 		{
 		}
@@ -3649,38 +3645,6 @@ namespace SpeedyChefAPIv2
 				if ((this._Mealsize != value))
 				{
 					this._Mealsize = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(255)")]
-		public string Recname
-		{
-			get
-			{
-				return this._Recname;
-			}
-			set
-			{
-				if ((this._Recname != value))
-				{
-					this._Recname = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recdesc", DbType="VarChar(255)")]
-		public string Recdesc
-		{
-			get
-			{
-				return this._Recdesc;
-			}
-			set
-			{
-				if ((this._Recdesc != value))
-				{
-					this._Recdesc = value;
 				}
 			}
 		}
