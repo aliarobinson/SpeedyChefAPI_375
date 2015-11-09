@@ -146,7 +146,7 @@ namespace SpeedyChefApi.Controllers
         {
             SpeedyChefDataContext scdc = new SpeedyChefDataContext();
             IEnumerable<GetMealsBetweenDatesResult> mealList = scdc.GetMealsBetweenDates(user, date1, date2);
-            return Json(mealList, JsonRequestBehavior.AllowGet);   
+            return Json(mealList, JsonRequestBehavior.AllowGet);
         }
     }
 }
