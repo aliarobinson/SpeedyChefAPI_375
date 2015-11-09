@@ -240,4 +240,16 @@
       <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.GetMealsBetweenDates" Method="GetMealsBetweenDates">
+    <Parameter Name="user" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="date1" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="date2" Type="System.String" DbType="VarChar(10)" />
+    <ElementType Name="GetMealsBetweenDatesResult">
+      <Column Name="Mealday" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Mealname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Mealsize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Recname" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

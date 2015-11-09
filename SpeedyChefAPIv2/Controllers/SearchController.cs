@@ -126,5 +126,27 @@ namespace SpeedyChefApi.Controllers
                 return Json(subgenreList.Concat(helperList), JsonRequestBehavior.AllowGet);
             }
         }
+
+        public class CompareIntegers : IComparer<DateTime>
+        {
+            public int Compare(DateTime s1, DateTime s2)
+            {
+                if (s1 >= s2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+        }
+
+        public ActionResult GenerateUpcomingMeals(string user, string date1, string date2)
+        {
+            SpeedyChefDataContext scdc = new SpeedyChefDataContext();
+            IEnumerable<GetMealsBetweenDatesResult> mealList = scdc.GetMealsBetweenDates(user, date1, date2);
+            return Json(mealList, JsonRequestBehavior.AllowGet);   
+        }
     }
 }
