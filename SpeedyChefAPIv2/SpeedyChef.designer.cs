@@ -3843,7 +3843,7 @@ namespace SpeedyChefAPIv2
 			}
 			set
 			{
-				if ((this._Mealsize != value))
+				if (this._Mealsize != value)
 				{
 					this._Mealsize = (int) value;
 				}

@@ -145,8 +145,14 @@ namespace SpeedyChefApi.Controllers
         public ActionResult GenerateUpcomingMeals(string user, string date1, string date2)
         {
             SpeedyChefDataContext scdc = new SpeedyChefDataContext();
+            List<string> stringList = new List<string>();
             IEnumerable<GetMealsBetweenDatesResult> mealList = scdc.GetMealsBetweenDates(user, date1, date2);
-            return Json(mealList, JsonRequestBehavior.AllowGet);
+            foreach (GetMealsBetweenDatesResult meal in mealList)
+            {
+                string newString = meal.Mealday.Value.Date.ToShortDateString() + ";" + meal.Mealname.ToString() + ";" + meal.Mealsize.ToString();
+                stringList.Add(newString);
+            }
+            return Json(stringList, JsonRequestBehavior.AllowGet);
         }
     }
 }
