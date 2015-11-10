@@ -350,18 +350,18 @@ namespace SpeedyChefAPIv2
 			return ((ISingleResult<RecipeTasksResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.RecipeIngredients")]
-		public ISingleResult<RecipeIngredientsResult> RecipeIngredients([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> recipeid)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), recipeid);
-			return ((ISingleResult<RecipeIngredientsResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TasksForMeal")]
 		public ISingleResult<TasksForMealResult> TasksForMeal([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> mealid)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), mealid);
 			return ((ISingleResult<TasksForMealResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.RecipeIngredients")]
+		public ISingleResult<RecipeIngredientsResult> RecipeIngredients([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> recipeid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), recipeid);
+			return ((ISingleResult<RecipeIngredientsResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -3830,104 +3830,6 @@ namespace SpeedyChefAPIv2
 		}
 	}
 	
-	public partial class RecipeIngredientsResult
-	{
-		
-		private string _Foodname;
-		
-		private int _Taskid;
-		
-		private string _Foodname1;
-		
-		private int _Recid;
-		
-		private int _Taskid1;
-		
-		public RecipeIngredientsResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Foodname", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Foodname
-		{
-			get
-			{
-				return this._Foodname;
-			}
-			set
-			{
-				if ((this._Foodname != value))
-				{
-					this._Foodname = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Taskid", DbType="Int NOT NULL")]
-		public int Taskid
-		{
-			get
-			{
-				return this._Taskid;
-			}
-			set
-			{
-				if ((this._Taskid != value))
-				{
-					this._Taskid = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Foodname1", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Foodname1
-		{
-			get
-			{
-				return this._Foodname1;
-			}
-			set
-			{
-				if ((this._Foodname1 != value))
-				{
-					this._Foodname1 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recid", DbType="Int NOT NULL")]
-		public int Recid
-		{
-			get
-			{
-				return this._Recid;
-			}
-			set
-			{
-				if ((this._Recid != value))
-				{
-					this._Recid = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Taskid1", DbType="Int NOT NULL")]
-		public int Taskid1
-		{
-			get
-			{
-				return this._Taskid1;
-			}
-			set
-			{
-				if ((this._Taskid1 != value))
-				{
-					this._Taskid1 = value;
-				}
-			}
-		}
-	}
-	
 	public partial class TasksForMealResult
 	{
 		
@@ -4075,6 +3977,68 @@ namespace SpeedyChefAPIv2
 				if ((this._Recid1 != value))
 				{
 					this._Recid1 = value;
+				}
+			}
+		}
+	}
+	
+	public partial class RecipeIngredientsResult
+	{
+		
+		private string _Foodname;
+		
+		private System.Nullable<int> _FoodAmount;
+		
+		private string _FoodAmountUnit;
+		
+		public RecipeIngredientsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Foodname", DbType="VarChar(50)")]
+		public string Foodname
+		{
+			get
+			{
+				return this._Foodname;
+			}
+			set
+			{
+				if ((this._Foodname != value))
+				{
+					this._Foodname = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FoodAmount", DbType="Int")]
+		public System.Nullable<int> FoodAmount
+		{
+			get
+			{
+				return this._FoodAmount;
+			}
+			set
+			{
+				if ((this._FoodAmount != value))
+				{
+					this._FoodAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FoodAmountUnit", DbType="VarChar(50)")]
+		public string FoodAmountUnit
+		{
+			get
+			{
+				return this._FoodAmountUnit;
+			}
+			set
+			{
+				if ((this._FoodAmountUnit != value))
+				{
+					this._FoodAmountUnit = value;
 				}
 			}
 		}

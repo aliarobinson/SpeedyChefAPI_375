@@ -126,7 +126,7 @@
         <classShapeMoniker Id="1e946187-2860-4a45-b53b-01c05334f322" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 12.1675439453125); (5.79166666666667 : 12.1675439453125 : JumpStart); (5.95833333333333 : 12.1675439453125 : JumpEnd); (12.5 : 12.1675439453125); (12.5 : 8.56899251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 12.1675439453125); (12.5 : 12.1675439453125); (12.5 : 8.56899251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SpeedyChefDataContext/Meal/Meal_Meal_Recipe" />
       <nodes>
         <classShapeMoniker Id="b3b36e8c-fc50-4a3d-a6f9-b78d2c36c92e" />
@@ -140,7 +140,7 @@
         <classShapeMoniker Id="27882bab-9270-4815-afd5-d84df61df085" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 4); (1.75 : 1.44314697265625); (2.19791916666667 : 1.44314697265625 : JumpStart); (2.36458583333333 : 1.44314697265625 : JumpEnd); (3.5 : 1.44314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.75 : 4); (1.75 : 1.44314697265625); (3.5 : 1.44314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SpeedyChefDataContext/Food_Item/Food_Item_Member_Allergen" />
       <nodes>
         <classShapeMoniker Id="c907bbb9-5331-401b-b014-bda11ef9aeed" />
@@ -203,7 +203,7 @@
         <classShapeMoniker Id="b5e06c62-0294-4118-97da-b9806487eac3" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.50084554036458); (3.5 : 4.50084554036458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 4.50084554036458); (3.04166666666667 : 4.50084554036458 : JumpStart); (3.36458333333333 : 4.50084554036458 : JumpEnd); (3.5 : 4.50084554036458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SpeedyChefDataContext/Food_Item/Food_Item_Task_Food_Item" />
       <nodes>
         <classShapeMoniker Id="c907bbb9-5331-401b-b014-bda11ef9aeed" />

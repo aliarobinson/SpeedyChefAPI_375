@@ -266,16 +266,6 @@
       <Column Name="Taskid1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.RecipeIngredients" Method="RecipeIngredients">
-    <Parameter Name="recipeid" Type="System.Int32" DbType="Int" />
-    <ElementType Name="RecipeIngredientsResult">
-      <Column Name="Foodname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Taskid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Foodname1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Recid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Taskid1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.TasksForMeal" Method="TasksForMeal">
     <Parameter Name="mealid" Type="System.Int32" DbType="Int" />
     <ElementType Name="TasksForMealResult">
@@ -287,6 +277,14 @@
       <Column Name="Taskid1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Mealid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Recid1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.RecipeIngredients" Method="RecipeIngredients">
+    <Parameter Name="recipeid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="RecipeIngredientsResult">
+      <Column Name="Foodname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FoodAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FoodAmountUnit" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>
