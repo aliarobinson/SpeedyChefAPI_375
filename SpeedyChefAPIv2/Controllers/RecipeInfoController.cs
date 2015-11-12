@@ -43,12 +43,12 @@ namespace SpeedyChefAPIv2.Controllers
         /// <returns></returns>
         public ActionResult RecipeIngredients(int recid)
         {
-            /* SpeedyChefDataContext scdc = new SpeedyChefDataContext();
+             SpeedyChefDataContext scdc = new SpeedyChefDataContext();
              IEnumerable<RecipeIngredientsResult> recipeIngredients = null;
 
              recipeIngredients = scdc.RecipeIngredients(recid);
-             return Json(recipeIngredients, JsonRequestBehavior.AllowGet);*/
-            Food_Item[] tempResult = new Food_Item[4];
+             return Json(recipeIngredients, JsonRequestBehavior.AllowGet);
+           /* Food_Item[] tempResult = new Food_Item[4];
             tempResult[0] = new Food_Item();
             tempResult[0].Foodname = "2 small garlic cloves";
             tempResult[1] = new Food_Item();
@@ -56,8 +56,8 @@ namespace SpeedyChefAPIv2.Controllers
             tempResult[2] = new Food_Item();
             tempResult[2].Foodname = "1 1/2 teaspoons finely chopped flat-leaf parsley";
             tempResult[3] = new Food_Item();
-            tempResult[3].Foodname = "2 (1 1/4-pound) live lobsters";
-            return Json(tempResult, JsonRequestBehavior.AllowGet);
+            tempResult[3].Foodname = "2 (1 1/4-pound) live lobsters"; 
+            return Json(tempResult, JsonRequestBehavior.AllowGet); */
         }
     }
 }
